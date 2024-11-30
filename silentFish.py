@@ -38,7 +38,7 @@ def show_banner():
     os.system("clear")
     print(SILENTFISH_LOGO)
     print(Style.BRIGHT + Fore.GREEN + "=" * 70)
-    print(Fore.GREEN + f"                    Welcome to {TOOL_NAME} v1.0\n{DEVELOPER_INFO}")
+    print(Fore.GREEN + f"                    Welcome to {TOOL_NAME} v1.0\n                    {DEVELOPER_INFO}")
     print(Fore.GREEN + "=" * 70 + Style.RESET_ALL)
 
 # Styled Disclaimer
