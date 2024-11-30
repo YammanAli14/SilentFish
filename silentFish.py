@@ -10,7 +10,6 @@ DEVELOPER_INFO = "Developed by: Yamman Butt"
 # Clean and Clear ASCII Art Logo
 SILENTFISH_LOGO = f"""
 {Fore.CYAN}
-   
 
 #     _____  _  _               _    ______  _       _     
 #    / ____|(_)| |             | |  |  ____|(_)     | |    
@@ -19,9 +18,6 @@ SILENTFISH_LOGO = f"""
 #    ____) || || ||  __/| | | || |_ | |     | |\__ \| | | |
 #   |_____/ |_||_| \___||_| |_| \__||_|     |_||___/|_| |_|
 #                                                          
-                                                        
-                                                                                                                                                                                                                                                                                     
-                                             
 
 {Style.RESET_ALL}
 """
