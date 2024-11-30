@@ -5,7 +5,7 @@ import time
 # Constants
 PHISHING_URL = "https://webfacebook.vercel.app"
 TOOL_NAME = "SilentFish"
-DEVELOPER_INFO = "Developed by: Yamman Butt\nTool Version: 1.0"
+DEVELOPER_INFO = "Developed by: Yamman Butt"
 
 # Clean and Clear ASCII Art Logo
 SILENTFISH_LOGO = f"""
@@ -38,7 +38,7 @@ def show_banner():
     os.system("clear")
     print(SILENTFISH_LOGO)
     print(Style.BRIGHT + Fore.GREEN + "=" * 70)
-    print(Fore.GREEN + f"                    Welcome to {TOOL_NAME} v1.0")
+    print(Fore.GREEN + f"                    Welcome to {TOOL_NAME} v1.0\n{DEVELOPER_INFO}")
     print(Fore.GREEN + "=" * 70 + Style.RESET_ALL)
 
 # Styled Disclaimer
