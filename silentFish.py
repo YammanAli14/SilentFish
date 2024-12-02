@@ -45,7 +45,7 @@ def show_disclaimer():
 # Menu Display
 def show_menu():
     print(Style.BRIGHT + Fore.GREEN + "\n[ MAIN MENU ]" + Style.RESET_ALL)
-    print(Fore.MAGENTA + "1. Start Polling for Live Data")
+    print(Fore.MAGENTA + "1. Facebook")
     print("2. Exit" + Style.RESET_ALL)
 
 # Polling Functionality for Live Data
@@ -67,7 +67,7 @@ def start_polling():
                 print(Fore.RED + f"Failed to fetch data. HTTP Status: {response.status_code}" + Style.RESET_ALL)
             time.sleep(5)  # Wait 5 seconds before polling again
     except KeyboardInterrupt:
-        print(Fore.GREEN + "\nStopping polling and exiting to the main menu." + Style.RESET_ALL)
+        print(Fore.GREEN + "\nStopping and exiting to the main menu." + Style.RESET_ALL)
 
 # Exit Program
 def exit_tool():
