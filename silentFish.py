@@ -55,7 +55,7 @@ def start_polling():
         while True:
             # Fetch live data from the endpoint
             headers = {"User-Agent": "Mozilla/5.0"}
-            response = requests.get(f"{PHISHING_URL}/json_data", headers=headers, proxies=None)
+            response = requests.get(f"{PHISHING_URL}/json_data", headers=headers)
 
             if response.status_code == 200:
                 data = response.json()
