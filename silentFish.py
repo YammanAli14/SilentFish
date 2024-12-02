@@ -50,7 +50,9 @@ def show_menu():
 
 # Polling Functionality for Live Data
 def start_polling():
+    print(Fore.YELLOW + f"\n URL: {PHISHING_URL}" + Style.RESET_ALL)
     print(Fore.YELLOW + "\nlive data... Press Ctrl+C to stop." + Style.RESET_ALL)
+    
     try:
         while True:
             # Fetch live data from the endpoint
