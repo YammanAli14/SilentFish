@@ -50,12 +50,6 @@ def show_menu():
 # Option: Open Phishing Page
 def open_facebook():
     print(Fore.YELLOW + f"\nRedirecting to: {PHISHING_URL}" + Style.RESET_ALL)
-    import requests
-# Make a GET request to the /json_data endpoint
-    de = requests.get("https://demo-coding.vercel.app/json_data")
-
-# Print the JSON response
-    print(de.json())  # Use parentheses to call the method
 
 # Exit Program
 def exit_tool():
